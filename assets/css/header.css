@@ -1,0 +1,12 @@
+header{
+    background-color: black;
+    color: lightgray;
+}
+
+li{
+    display: inline;    
+}
+
+a{
+    display: inline;
+}
