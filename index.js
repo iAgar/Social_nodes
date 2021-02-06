@@ -1,9 +1,9 @@
 const express = require('express');
+const db = require('./config/mongoose');
 const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const sassMiddleware = require('node-sass-middleware');
-const MongoStore = require('connect-mongo')(session);
 
 app.use(express.urlencoded());
 app.use(express.static('./assets'));
