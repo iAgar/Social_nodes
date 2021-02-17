@@ -34,6 +34,7 @@ app.use(session({
     cookie: {
         maxAge: 1000*60*10
     },
+    //this stores the cookie in the db and hence user is not signed out when server restarts
     store: new MongoStore({
         mongooseConnection: db,
         autoRemove: 'disabled'

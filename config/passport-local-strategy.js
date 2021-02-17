@@ -21,11 +21,13 @@ passport.use(new LocalStrategy({
     }
 ));
 
-//this stores users id in the session cookie 
+//serializeUser picks out the info from the user which needs to be set up in the session cookie
 passport.serializeUser(function(user, done){
+    //this stores users id in the session cookie 
     done(null, user.id);
 });
   
+
 passport.deserializeUser(function(id, done){
     User.findById(id, function(err, user) {
         if(err){console.log('Error in finding user -> Passport'); return done(err)}

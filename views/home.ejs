@@ -1,5 +1,18 @@
 <%if(locals.user){%>
     <h1>Hello Better World</h1>
+    <form action="/post/create" method="POST">
+        <input type="text" id="content" name="content" placeholder="What is on your mind ?">
+        <button type="submit">Create Post</button>
+    </form>
+    <%for(p of post){%>
+        <ul>
+            <li>
+                <%=p.content%>
+                <br>
+                <%=p.user.name%>
+            </li>
+        </ul>
+    <%}%>
 <%}else{%>
 <h1>Hello World</h1>
 <%}%>

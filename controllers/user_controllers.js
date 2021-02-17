@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated()){
@@ -6,7 +7,7 @@ module.exports.signUp = function(req, res){
     }
 
     return res.render('sign-up', {
-        title: 'Sign Up'
+        title: 'Social Nodes | Sign Up'
     });
 }
 
@@ -16,7 +17,7 @@ module.exports.signIn = function(req, res){
     }
 
     return res.render('sign-in', {
-        title: 'Sign In'
+        title: 'Social Nodes | Sign In'
     });
 }
 
@@ -47,8 +48,10 @@ module.exports.destroySession = function(req, res){
 }
 
 module.exports.profile = function(req, res){
-    return res.render('profile',{
-        title: 'Profile'
-    }
-    );
+    Post.find({}).populate('user').exec( function(err, posts){
+        return res.render('profile',{
+            title: 'Social Nodes | Profile',
+            posts: posts
+        });
+    })
 }

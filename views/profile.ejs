@@ -1,1 +1,13 @@
 <p>Name: <%=user.name%></p>
+<p>Posts made by <%=user.name%></p>
+<%for(p of posts){%>
+    <%if(p.user._id == locals.user.id){%>
+        <ul>
+            <li>
+                <%=p.content%>
+                <br>
+                <%=p.user.name%>
+            </li>
+        </ul>
+    <%}%>
+<%}%>
