@@ -8,7 +8,12 @@ const postSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId, //this type is a reference
         ref:'User' //Mongo assumes that ref refers to a model name
-    }
+    },
+    //this array of ids of comments is included to print the associated comments along side the post 
+    comment: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 },{
     timestamps: true
 });
