@@ -18,3 +18,14 @@ module.exports.create = function(req, res){
         }
     })
 }
+
+module.exports.delete = function(req, res){
+    Comment.findByIdAndDelete(req.params.id, function(err){
+        if(err){
+            console.log('Error in deleting the comment', err);
+            return res.redirect('back');
+        }
+        
+        return res.redirect('back');
+    })
+}

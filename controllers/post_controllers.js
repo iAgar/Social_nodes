@@ -11,3 +11,13 @@ module.exports.create = function(req, res){
         return res.redirect('back');
     })
 }
+
+module.exports.delete = function(req, res){
+    Post.findByIdAndDelete(req.params.id, function(err, Post){
+        if(err){
+            console.log('Error in deleting post', err);
+        }
+
+        return res.redirect('back');
+    })
+}

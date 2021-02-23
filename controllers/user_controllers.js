@@ -48,11 +48,33 @@ module.exports.destroySession = function(req, res){
 }
 
 module.exports.profile = function(req, res){
-    Post.find({}).populate('user').exec( function(err, posts){
-        return res.render('profile',{
-            title: 'Social Nodes | Profile',
-            posts: posts
-        });
+
+    User.findById(req.params.id, function(err, user){
+        Post.find({}).populate('user').populate({
+            path: 'comment',
+            populate: {
+                path: 'user'
+            }
+        }).exec( function(err, posts){
+            return res.render('profile',{
+                title: 'Social Nodes | Profile',
+                posts: posts,
+                profile_user: user
+            });
+        })
     })
+
 }
 
+module.exports.update = function(req, res){
+    //ensuring that the person signed in is the one whose details are to be updated
+    //else anyone can change the id in the form and update someone else's details
+    if(req.user.id == req.params.id) 
+    { 
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            return res.redirect('back');
+        });
+    }else{
+        res.status(401).send('Unauthorised');
+    }
+}

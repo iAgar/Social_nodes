@@ -1,0 +1,6 @@
+<%=c.content%>
+            <%if((p.user._id == locals.user.id) || (c.user._id == locals.user.id)){%>
+                <a href="/comment/delete/<%=c._id%>">X</a>
+            <%}%>
+            <br>
+<a href="/user/profile/<%=c.user._id%>"><%=c.user.name%></a>

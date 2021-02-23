@@ -1,13 +1,14 @@
-<p>Name: <%=user.name%></p>
-<p>Posts made by <%=user.name%></p>
+<p>Name: <%=profile_user.name%></p>
+<%if(locals.user.id == profile_user.id){%>
+<form action="/user/update/<%=user.id%>" method="POST">
+    <input name="email" type="email" placeholder="Your email" value="<%=user.email%>" required>
+    <input name="name" type="text" placeholder="Your name" value="<%=user.name%>" required>
+    <button type="submit">Update</button>
+</form>
+<%}%>
+<p>Posts made by <%=profile_user.name%></p>
 <%for(p of posts){%>
-    <%if(p.user._id == locals.user.id){%>
-        <ul>
-            <li>
-                <%=p.content%>
-                <br>
-                <%=p.user.name%>
-            </li>
-        </ul>
+    <%if(p.user._id == profile_user.id){%>
+        <%-include('_post');%>
     <%}%>
 <%}%>
