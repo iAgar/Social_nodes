@@ -9,6 +9,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 //Allows reading form data
 app.use(express.urlencoded());
@@ -48,11 +50,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+app.use(flash());
+app.use(customMware.setFlash);
+
 app.use('/', require('./routes'));
-
-
-
-
 
 app.listen(port, function(err){
     if(err){

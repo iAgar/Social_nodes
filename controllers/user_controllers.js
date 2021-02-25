@@ -25,6 +25,7 @@ module.exports.create = function(req, res){
     if(req.body.password != req.body.confPassword)
     {
         console.log("The passwords entered did not match");
+        req.flash('err', 'The passwords did not match');
         return res.redirect('back');
     }
 
@@ -39,11 +40,13 @@ module.exports.create = function(req, res){
 }
 
 module.exports.createSession = function(req, res){
+    req.flash('success', 'You have logged in successfully');
     return res.redirect('/');
 }
 
 module.exports.destroySession = function(req, res){
     req.logout();
+    req.flash('success', 'You have logged out successfully');
     return res.redirect('/');
 }
 
@@ -75,6 +78,7 @@ module.exports.update = function(req, res){
     if(req.user.id == req.params.id) 
     { 
         User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            req.flash('success', 'Your details have been updated!');
             return res.redirect('back');
         });
     }else{
