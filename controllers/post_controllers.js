@@ -1,23 +1,27 @@
 const Post = require('../models/post');
 const User = require('../models/user');
+const Comment = require('../models/comment');
 
-module.exports.create = function(req, res){
-    Post.create({content: req.body.content, user: req.user._id}, function(err, Post){
-        if(err){
-            console.log('Error in creating a post', err);
-            return res.redirect('back');
-        }
+module.exports.create = async function(req, res){
+    try{
+        let posts = await Post.create({content: req.body.content, user: req.user._id});
 
         return res.redirect('back');
-    })
+    }catch(err){
+        console.log('Error in creating post', err);
+        return;
+    }
 }
 
-module.exports.delete = function(req, res){
-    Post.findByIdAndDelete(req.params.id, function(err, Post){
-        if(err){
-            console.log('Error in deleting post', err);
-        }
+module.exports.delete = async function(req, res){
+    try{
+        let posts = await Post.findByIdAndDelete(req.params.id)
 
+        let comments = await Comment.deleteMany({post: req.params.id})
+            
         return res.redirect('back');
-    })
+    }catch(err){
+        console.log('Error', err);
+        return;
+    }
 }

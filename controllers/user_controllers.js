@@ -47,23 +47,26 @@ module.exports.destroySession = function(req, res){
     return res.redirect('/');
 }
 
-module.exports.profile = function(req, res){
+module.exports.profile = async function(req, res){
 
-    User.findById(req.params.id, function(err, user){
-        Post.find({}).populate('user').populate({
+    try{
+        let user = await User.findById(req.params.id);
+        let posts = await Post.find({}).populate('user').populate({
             path: 'comment',
             populate: {
                 path: 'user'
             }
-        }).exec( function(err, posts){
-            return res.render('profile',{
+        });
+        
+        return res.render('profile',{
                 title: 'Social Nodes | Profile',
                 posts: posts,
                 profile_user: user
-            });
-        })
-    })
-
+        });
+    }catch(err){
+        console.log('Error', err);
+        return;
+    }
 }
 
 module.exports.update = function(req, res){
