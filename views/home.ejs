@@ -1,12 +1,17 @@
 <%if(locals.user){%>
     <h1>Hello Better World</h1>
-    <form action="/post/create" method="POST">
+    <form action="/post/create" id="new-post-form" method="POST">
         <input type="text" id="content" name="content" placeholder="What is on your mind ?" required>
         <button type="submit">Create Post</button>
     </form>
-    <%for(p of post){%>
-        <%-include('_post');%>
-    <%}%>
+    <div id="posts-list-container">
+        <ul>
+            <%for(post of post){%>
+                <%-include('_post');%>
+            <%}%>
+        </ul>
+    </div>
 <%}else{%>
 <h1>Hello World</h1>
 <%}%>
+<script src="/js/home_post.js"></script>

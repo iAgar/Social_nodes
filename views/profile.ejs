@@ -7,8 +7,8 @@
 </form>
 <%}%>
 <p>Posts made by <%=profile_user.name%></p>
-<%for(p of posts){%>
-    <%if(p.user._id == profile_user.id){%>
+<%for(post of posts){%>
+    <%if(post.user._id == profile_user.id){%>
         <%-include('_post');%>
     <%}%>
 <%}%>

@@ -1,7 +1,7 @@
-<%=c.content%>
-            <%if((p.user._id == locals.user.id) || (c.user._id == locals.user.id)){%>
-                <a href="/comment/delete/<%=c._id%>">X</a>
+<%=comment.content%>
+            <%if((post.user._id == locals.user.id) || (comment.user._id == locals.user.id)){%>
+                <a href="/comment/delete/<%=comment._id%>">X</a>
             <%}%>
             <br>
-<a href="/user/profile/<%=c.user._id%>"><%=c.user.name%></a>
+<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
 <br>
