@@ -1,7 +1,8 @@
+<img src="<%=comment.user.avatar%>" width="20">
+<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
 <%=comment.content%>
             <%if((post.user._id == locals.user.id) || (comment.user._id == locals.user.id)){%>
                 <a href="/comment/delete/<%=comment._id%>">X</a>
             <%}%>
             <br>
-<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
 <br>

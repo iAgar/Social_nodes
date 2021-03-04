@@ -35,11 +35,11 @@
     //method to create a post in DOM
     let newPostDOM = function(data){
         return $(`<li id="post-${data.post._id}">
+        <img src="${data.user.avatar}" width="20">
+        <a href="/user/profile/${data.user._id}">${data.user.name}</a>
         ${data.post.content}
             <a class="delete-post-button" href="/post/delete/${data.post._id}">X</a>
         <br>
-        <a href="/user/profile/${data.user._id}">${data.user.name}</a>
-    <br>
     <p>Comments:</p>
         <form action="/comment/create" method="POST">
             <input type="text" id="content" name="content" placeholder="Add Comment..." required>

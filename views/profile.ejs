@@ -1,8 +1,10 @@
+<img src="<%=user.avatar%>" alt="Avatar" width="100">
 <p>Name: <%=profile_user.name%></p>
 <%if(locals.user.id == profile_user.id){%>
-<form action="/user/update/<%=user.id%>" method="POST">
+<form action="/user/update/<%=user.id%>" enctype="multipart/form-data" method="POST">
     <input name="email" type="email" placeholder="Your email" value="<%=user.email%>" required>
     <input name="name" type="text" placeholder="Your name" value="<%=user.name%>" required>
+    <input name="avatar" type="file" placeholder="Your profile picture">
     <button type="submit">Update</button>
 </form>
 <%}%>

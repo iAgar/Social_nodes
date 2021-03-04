@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const Post = require('../models/post');
+const fs = require("fs");
+const path = require('path');
 
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated()){
@@ -72,16 +74,51 @@ module.exports.profile = async function(req, res){
     }
 }
 
-module.exports.update = function(req, res){
+module.exports.update = async function(req, res){
+    
     //ensuring that the person signed in is the one whose details are to be updated
     //else anyone can change the id in the form and update someone else's details
     if(req.user.id == req.params.id) 
     { 
-        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+        try{
+            let user = await User.findByIdAndUpdate(req.params.id);
+            //the form data wont be accessible from req.params as the update form is a multipart form
+            //hence to access the req, we use the static function defined in user model
+            User.uploadedAvatar(req, res, function(err){
+                if(err){
+                    console.log('Multer error', err);
+                }
+
+                user.name = req.body.name;
+                user.email = req.body.email;
+                if(req.file){
+                    if(req.file.mimetype=='image/jpeg'){
+                        if(user.avatar){
+                            if(fs.existsSync(path.join(__dirname, '..', user.avatar)))
+                            fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                        }
+                        //this is saving the path of the uploaded file into the avatar field of the user
+                        user.avatar = User.avatarPath + '/' + req.file.filename;
+                    }
+                    else{
+                        req.flash('err', 'Incorrect file type. only JPG is allowed');
+                        return res.redirect('back');
+                    }
+                }
+                user.save();
+                req.flash('success', 'Details updated successfully');
+                return res.redirect('back');
+            });
+        }catch(err){
+            req.flash('error', err);
+            return res.redirect('back');
+        }
+        /*User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
             req.flash('success', 'Your details have been updated!');
             return res.redirect('back');
-        });
+        });*/
     }else{
+        req.flash('error', err);        
         res.status(401).send('Unauthorised');
     }
 }
