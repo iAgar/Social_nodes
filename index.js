@@ -37,7 +37,7 @@ app.use(session({
     saveUninitialized: false, //prohibits saving of data in session cookie if user is not logged in
     resave: false, //prohibits rewriting of cookie data if no change has taken place
     cookie: {
-        maxAge: 1000*60*10
+        maxAge: 1000*10
     },
     //this stores the cookie in the db and hence user is not signed out when server restarts
     store: new MongoStore({

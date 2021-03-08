@@ -78,35 +78,3 @@
     createPost();
 }
 
-{
-   /* let createComment = function(){
-        let newCommentForm = $('#comment-create-form');
-
-        newCommentForm.submit(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                type: 'post',
-                url: '/comment/create',
-                data: newCommentForm.serialize(),
-                success: function(data){
-                    console.log(data);
-                    let newComment = newCommentDOM(data.data);
-                    $('#comment-list-container>ul').prepend(newComment);
-                }, error: function(error){
-                    console.log(error.responseText);
-                }
-            })
-        })
-    }
-
-    let newCommentDOM = function(data){
-        return $(`${data.comment.content}
-            <a href="/comment/delete/${data.comment._id}">X</a>
-        <br>
-        <a href="/user/profile/${data.user._id}">${data.user.name}</a>
-        <br>`)
-    }
-
-    createComment();*/
-}

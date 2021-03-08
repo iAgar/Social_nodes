@@ -1,4 +1,4 @@
-<img src="<%=user.avatar%>" alt="Avatar" width="100">
+<img src="<%=profile_user.avatar%>" alt="Avatar" width="100">
 <p>Name: <%=profile_user.name%></p>
 <%if(locals.user.id == profile_user.id){%>
 <form action="/user/update/<%=user.id%>" enctype="multipart/form-data" method="POST">
