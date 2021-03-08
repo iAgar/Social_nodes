@@ -10,5 +10,8 @@ router.post('/create-session', passport.authenticate('local', {failureRedirect: 
 router.get('/sign-out', userControllers.destroySession);
 router.get('/profile/:id',passport.checkAuthentication, userControllers.profile);
 router.post('/update/:id', passport.checkAuthentication, userControllers.update);
+//scope is the info that we are looking to fetch
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/user/sign-in'}), userControllers.createSession);
 
 module.exports = router

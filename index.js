@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogleOauth = require('./config/passport-google-oauth2-strategy');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
@@ -37,7 +38,7 @@ app.use(session({
     saveUninitialized: false, //prohibits saving of data in session cookie if user is not logged in
     resave: false, //prohibits rewriting of cookie data if no change has taken place
     cookie: {
-        maxAge: 1000*10
+        maxAge: 1000*20
     },
     //this stores the cookie in the db and hence user is not signed out when server restarts
     store: new MongoStore({

@@ -92,10 +92,11 @@ module.exports.update = async function(req, res){
                 user.name = req.body.name;
                 user.email = req.body.email;
                 if(req.file){
-                    if(req.file.mimetype=='image/jpeg'){
+                    if(req.file.mimetype=='image/jpeg' || req.file.mimetype=='image/png'){
                         if(user.avatar){
-                            if(fs.existsSync(path.join(__dirname, '..', user.avatar)))
-                            fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                            if(fs.existsSync(path.join(__dirname, '..', user.avatar))){
+                                fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                            }
                         }
                         //this is saving the path of the uploaded file into the avatar field of the user
                         user.avatar = User.avatarPath + '/' + req.file.filename;
