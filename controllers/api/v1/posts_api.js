@@ -25,6 +25,8 @@ module.exports.delete = async function(req, res)
         console.log(req);
         console.log(post.user);
         console.log(req.user.id);
+        console.log(req.params.id)
+
         if(post.user == req.user.id){
             post.remove();
             await Comment.deleteMany({post: req.params.id})
