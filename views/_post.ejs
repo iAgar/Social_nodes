@@ -6,6 +6,9 @@
             <a class="delete-post-button" href="/post/delete/<%=post._id%>">X</a>
         <%}%>
         <br>
+        <form method="POST" action="/like/toggle/?id=<%=post._id%>&type=Post">
+            <button type="submit"><%=post.likes.length%> Likes</button>
+        </form>
         <p>Comments: </p>
         <div id="comment-list-container">
             <ul>

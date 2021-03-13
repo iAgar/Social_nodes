@@ -10,8 +10,12 @@ module.exports.home = async function(req, res){
         .populate({ //nested populate
             path: 'comment', 
             populate: {
+                path: 'like'
+            },
+            populate: {
                 path: 'user'
-            }});
+            }
+        }).populate('like');
 
         return res.render('home', {
             title: "Social Nodes",

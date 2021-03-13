@@ -5,4 +5,7 @@
                 <a href="/comment/delete/<%=comment._id%>">X</a>
             <%}%>
             <br>
+            <form method="POST" action="/like/toggle/?id=<%=comment._id%>&type=Comment">
+                <button type="submit"><%=comment.likes.length%> Likes</button>
+            </form>
 <br>

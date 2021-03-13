@@ -9,7 +9,7 @@ exports.newComment = (comment) => {
         from: 'ishaanagarwal1805@gmail.com',
         to: comment.user.email,
         subject: "You just made a new comment!",
-        html: "<h1>Waah bete</h1>"
+        html: "<h1>You just commented</h1>"
     }, (err, info)=>{
         if(err){
             console.log('Error in sending mail', err);

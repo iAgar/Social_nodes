@@ -40,6 +40,9 @@
         ${data.post.content}
             <a class="delete-post-button" href="/post/delete/${data.post._id}">X</a>
         <br>
+        <form method="POST" action="/like/toggle/?id=${data.post._id}&type=Post">
+            <button type="submit">0 Likes</button>
+        </form>
     <p>Comments:</p>
         <form action="/comment/create" method="POST">
             <input type="text" id="content" name="content" placeholder="Add Comment..." required>
