@@ -9,15 +9,31 @@
         <!--jquery is added after noty as noty does not require jquery-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <link rel="stylesheet" href="/css/layout.css">
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/chat-box.css">
+        <link rel="stylesheet" href="<%= assetPath('css/layout.css')%>">
+        <link rel="stylesheet" href="<%= assetPath('css/header.css')%>">
+        <link rel="stylesheet" href="<%= assetPath('css/footer.css')%>">
+        <link rel="stylesheet" href="<%= assetPath('css/chat-box.css')%>">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <%-style%>
     </head>
     <body>
         <%-include('_header'); %>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
         <%-body%>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
         <%-include('_footer');%>
         <script>
             <%if(flash.success && flash.success.length>0){%>

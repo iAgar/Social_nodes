@@ -1,0 +1,11 @@
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    background-color: #05A5E0;
+    text-shadow: 1px 1px black;
+}
+
+footer li{
+    display: inline;
+}

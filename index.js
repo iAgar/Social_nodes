@@ -1,6 +1,9 @@
 const express = require('express');
+const env = require('./config/environment');
+const morgan = require('morgan');
 const db = require('./config/mongoose');
 const app = express();
+require('./config/view-helpers')(app);
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const sassMiddleware = require('node-sass-middleware');
@@ -13,6 +16,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const environment = require('./config/environment');
 
 //set up chat server to be used with socket.io
 const chatServer = require('http').Server(app);
@@ -24,9 +28,11 @@ console.log('Chatserver is listening on 5000');
 app.use(express.urlencoded());
 
 app.use(cookieParser());
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 //make the uploads path available to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
+
+app.use(morgan(env.morgan.mode, env.morgan.options))
 
 app.use(expressLayouts);
 
@@ -40,7 +46,7 @@ app.set('views', './views');
 //this middleware defines a session cookie
 app.use(session({
     name: 'social_nodes',
-    secret: 'empty', //this is used to encrypt a session cookie
+    secret: env.session_cookie_key, //this is used to encrypt a session cookie
     saveUninitialized: false, //prohibits saving of data in session cookie if user is not logged in
     resave: false, //prohibits rewriting of cookie data if no change has taken place
     cookie: {
