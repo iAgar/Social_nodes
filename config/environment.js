@@ -16,7 +16,7 @@ const accessLogStream = rfs.createStream('access.log', {
 const development = {
     name: 'development',
     asset_path: './assets',
-    session_cookie_key: 'iQ4HWnCMsZ4A2RDur9NM36tIMiqlkx6g',
+    session_cookie_key: '*',
     db: 'social_nodes_development',
     smtp: {
         service: "gmail",
@@ -25,13 +25,13 @@ const development = {
         secure: false,
         auth: {
             user: 'nodes.social',
-            pass: 'Deev@1805'
+            pass: '*'
         }
     },
     google_clientID: "*",
     google_clientSecret: "*",
     google_callbackURL: "http://localhost:8000/user/auth/google/callback",
-    jwt_secret: 'zA2NIPigBTCdbqypRNkYFsUMdExrxgIy',
+    jwt_secret: '*',
     morgan: {
         mode: 'dev', 
         options: {stream: accessLogStream}
