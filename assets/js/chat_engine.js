@@ -27,7 +27,7 @@ class ChatEngine{
 
             self.socket.emit('join_room', {
                 user_email: self.userEmail,
-                chatroom: 'SocialNodes'
+                chatroom: 'Social-Nodes'
             });
 
             self.socket.on('user_join', function(data){
@@ -35,14 +35,15 @@ class ChatEngine{
             })
         });
 
-        $('#send-message').click(function(){
+        $('#send-message').click(function(e){
+            e.preventDefault();
             let msg = $('#chat-message-input').val();
 
-            if(message!= ''){
+            if(msg!= ''){
                 self.socket.emit('send_message', {
                     message: msg,
-                    user_email: self.userEmail,
-                    chatroom: 'SocialNodes'
+                    userEmail: self.userEmail,
+                    chatroom: 'Social-Nodes'
                 })
             }
         });
@@ -50,7 +51,12 @@ class ChatEngine{
         self.socket.on('recieve_message', function(data){
             console.log('message recieved', data.message);
 
+            console.log(self.userEmail);
+            console.log(data.userEmail)
+
             let newMessage = $('<li>');
+
+            let gap = $('<br>');
 
             let messageType = 'other-message';
 
@@ -62,13 +68,16 @@ class ChatEngine{
                 'html': data.message
             }));
 
-            // newMessage.append($('<sub>', {
-            //     'html': data.userEmail
-            // }));
+            newMessage.append('<sub>', {
+                 'html': data.userEmail
+            });
 
             newMessage.addClass(messageType);
 
+            console.log(newMessage);
+
             $('#chat-messages-list').append(newMessage);
+            $('#chat-messages-list').append(gap);
         })
     }
 }

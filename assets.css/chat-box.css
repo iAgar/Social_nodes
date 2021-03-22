@@ -1,1 +1,1 @@
-#chat-box{background-color:#fff;color:#000;width:32%;height:100%;margin-left:67%;margin-top:-15%;position:fixed}#recieved-messages{float:left;background-color:green}#recieved-messages,#sent-messages{color:#fff;padding:5px;border-radius:25%}#sent-messages{float:right;background-color:blue}
+.other-message{background-color:#dc143c;padding:3px;float:left}.self-message{background-color:#679267;padding:3px;float:right}

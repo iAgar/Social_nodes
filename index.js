@@ -19,6 +19,7 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 const environment = require('./config/environment');
 app.use(cors());
+const path = require('path');
 
 //set up chat server to be used with socket.io
 const chatServer = require('http').Server(app);
