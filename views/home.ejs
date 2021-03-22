@@ -1,25 +1,33 @@
 <%if(locals.user){%>
-    <h1>Hello Better World</h1>
-    <form action="/post/create" id="new-post-form" method="POST">
-        <input type="text" id="content" name="content" placeholder="What is on your mind ?" required>
-        <button type="submit">Create Post</button>
-    </form>
-    <div id="posts-list-container">
-        <ul>
-            <%for(post of post){%>
-                <%-include('_post');%>
-            <%}%>
-        </ul>
+    <div style="display: grid; grid-template-columns: 2fr 1fr;">
+        <div>
+            <form action="/post/create" id="new-post-form" method="POST">
+                <input type="text" id="content" name="content" placeholder="What is on your mind ?" required>
+                <button type="submit">Create Post</button>
+            </form>
+            <div id="posts-list-container">
+                <ul>
+                    <%for(post of post){%>
+                        <%-include('_post');%>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <%-include('_chat-box')%>
+        </div>
     </div>
-    <%-include('_chat-box');%>
 <%}else{%>
-<h1>Hello World</h1>
+    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+        <%-include('_sign-in');%>
+        <%-include('_sign-up');%>
+    </div>
 <%}%>
 <script src="<%= assetPath('home_post.js')%>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
 <script src="<%= assetPath('chat_engine.js')%>"></script>
 <%if(locals.user){%>
 <script>
-    new ChatEngine('chat-box', '<%=locals.user.email%>')
+    new ChatEngine('chat', '<%=locals.user.email%>')
 </script>
 <%}%>

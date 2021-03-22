@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const db = require('./config/mongoose');
 const app = express();
 require('./config/view-helpers')(app);
+const cors= require('cors');
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const sassMiddleware = require('node-sass-middleware');
@@ -17,6 +18,7 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 const environment = require('./config/environment');
+app.use(cors());
 
 //set up chat server to be used with socket.io
 const chatServer = require('http').Server(app);

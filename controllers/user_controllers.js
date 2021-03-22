@@ -3,25 +3,25 @@ const Post = require('../models/post');
 const fs = require("fs");
 const path = require('path');
 
-module.exports.signUp = function(req, res){
-    if(req.isAuthenticated()){
-        return res.redirect('back');
-    }
+// module.exports.signUp = function(req, res){
+//     if(req.isAuthenticated()){
+//         return res.redirect('back');
+//     }
 
-    return res.render('sign-up', {
-        title: 'Social Nodes | Sign Up'
-    });
-}
+//     return res.render('sign-up', {
+//         title: 'Social Nodes | Sign Up'
+//     });
+// }
 
-module.exports.signIn = function(req, res){
-    if(req.isAuthenticated()){
-        return res.redirect('back');
-    }
+// module.exports.signIn = function(req, res){
+//     if(req.isAuthenticated()){
+//         return res.redirect('back');
+//     }
 
-    return res.render('sign-in', {
-        title: 'Social Nodes | Sign In'
-    });
-}
+//     return res.render('sign-in', {
+//         title: 'Social Nodes | Sign In'
+//     });
+// }
 
 module.exports.create = function(req, res){
     if(req.body.password != req.body.confPassword)

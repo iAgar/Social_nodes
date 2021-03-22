@@ -18,7 +18,7 @@ class ChatEngine{
     //this will have the to and fro interaction between user and server
     connnectionHandler(){
 
-        let self = this
+        let self = this;
 
         //on is used for detecting an event
         //connection is the first event that taked place on socket
@@ -27,22 +27,22 @@ class ChatEngine{
 
             self.socket.emit('join_room', {
                 user_email: self.userEmail,
-                chatroom: 'Social Nodes'
+                chatroom: 'SocialNodes'
             });
 
             self.socket.on('user_join', function(data){
                 console.log('User Joined', data);
             })
-        })
+        });
 
         $('#send-message').click(function(){
-            let message = $('#chat-message-input').val();
+            let msg = $('#chat-message-input').val();
 
             if(message!= ''){
                 self.socket.emit('send_message', {
-                    message: message,
+                    message: msg,
                     user_email: self.userEmail,
-                    chatroom: 'Social Nodes'
+                    chatroom: 'SocialNodes'
                 })
             }
         });
@@ -62,13 +62,13 @@ class ChatEngine{
                 'html': data.message
             }));
 
-            newMessage.append($('<sub>', {
-                'html': data.userEmail
-            }));
+            // newMessage.append($('<sub>', {
+            //     'html': data.userEmail
+            // }));
 
             newMessage.addClass(messageType);
 
-            $('chat-messages-list').append(newMessage);
+            $('#chat-messages-list').append(newMessage);
         })
     }
 }

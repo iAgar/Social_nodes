@@ -1,11 +1,31 @@
-<img src="<%=comment.user.avatar%>" width="20">
-<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
-<%=comment.content%>
+<!-- <div class="card" style="height: 35%; width: 33%; left: 33%;">
+    <h5 class="card-header">Comment</h5>
+    <div class="card-body">
+        <h5 class="card-title">
+            <%=comment.content%>
             <%if((post.user._id == locals.user.id) || (comment.user._id == locals.user.id)){%>
                 <a href="/comment/delete/<%=comment._id%>">X</a>
             <%}%>
-            <br>
-            <form method="POST" action="/like/toggle/?id=<%=comment._id%>&type=Comment">
-                <button type="submit"><%=comment.likes.length%> Likes</button>
-            </form>
+        </h5>
+        <p class="card-text">
+            <img src="<%=comment.user.avatar%>" width="20">
+            <a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
+        </p>
+        <form method="POST" action="/like/toggle/?id=<%=comment._id%>&type=Comment">
+            <button type="submit"><%=comment.likes.length%> Likes</button>
+        </form>
+    </div>
+</div> -->
+    
+
+<img src="<%=comment.user.avatar%>" width="20">
+<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
+<%=comment.content%>
+<%if((post.user._id == locals.user.id) || (comment.user._id == locals.user.id)){%>
+    <a href="/comment/delete/<%=comment._id%>">X</a>
+<%}%>
+<br>
+<form method="POST" action="/like/toggle/?id=<%=comment._id%>&type=Comment">
+    <button type="submit"><%=comment.likes.length%> Likes</button>
+</form>
 <br>

@@ -1,19 +1,16 @@
-<div id="chat-box">
-    <ul id="chat-message-list">
+<div id="chat" style="position: relative;">
+    <ul id="chat-messages-list">
         <li class="other-message">
-            <span>Other Message</span>
+            <span style="background-color: #DC143C; padding: 3px; float: left">Other Message</span>
         </li>
+        <br>
+        <br>
         <li class="self-message">
-            <span>Self Message</span>
+            <span style="background-color: #679267; padding: 3px; float: right">Self Message</span>
         </li>
     </ul>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <form>
+    <form style="position: absolute; bottom: -200px;">
         <input type="text" id="chat-message-input" placeholder="Type Message...">
-        <button type="submit"  id="send-message">Send Message</button>
+        <button type="submit" id="send-message">Send</button>
     </form>
 </div>
