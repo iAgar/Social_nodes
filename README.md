@@ -1,6 +1,11 @@
 # Social Nodes
 
-Social Nodes is a social media website created using Express.js on Node.js. It uses MongoDB for storing data.
+A social media website based on MVC style built using MongoDB, Express.js and Node.js. The site has been hosted on AWS. The website uses passport.js and GoogleOAuth for 
+user authentication. User can create, delete and like posts and comments. sockets.io has been used to implement chat feature. To improve user experience, AJAX, jQuery 
+and noty.js have been used. The site makes use of session cookies. Other libraries used are multer (for uploading documents), kue(to implement parallel jobs), 
+gulp(for minifying asset files). 
+
+# Features
 
 Chat Feature:
 https://user-images.githubusercontent.com/70597343/112355165-67b83880-8cf3-11eb-8860-db0d43d098ca.mp4
