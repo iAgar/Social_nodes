@@ -1,13 +1,24 @@
-<html>
-    <head>
-        <title>
-            <%=title%>
-        </title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and title -->
+  <link rel="icon" href="path/to/fav.png">
+  <title>
+    <%=title%>
+  </title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         
-        <!--jquery is added after noty as noty does not require jquery-->
+        <!-- jquery is added after noty as noty does not require jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="<%= assetPath('css/layout.css')%>">
@@ -15,51 +26,75 @@
         <link rel="stylesheet" href="<%= assetPath('css/footer.css')%>">
         <link rel="stylesheet" type="text/css" href="<%= assetPath('css/chat-box.css')%>">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-        <%-style%>
-    </head>
-    <body>
-        <%-include('_header'); %>
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <%-body%>
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
+  <!-- Halfmoon CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
+  <%-style%>
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+
+
+  <!-- Page wrapper start -->
+  <div class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom">
+
+    <!-- Sticky alerts (toasts), empty container -->
+    <div class="sticky-alerts">
+    </div>
+
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <%if(locals.user){%>
+        <h3><a href="/">Social Nodes</a></h3>
+      <%}else{%>
+        <h3>Social Nodes</h3>
+      <%}%>
+      
+    </nav>
+
+    <%-body%>
+
+    <!-- Navbar fixed bottom start -->
+    <nav class="navbar navbar-fixed-bottom">
         <%-include('_footer');%>
-        <script>
-            <%if(flash.success && flash.success.length>0){%>
-                new Noty({
-                    theme: 'sunset',
-                    text: "<%=flash.success%>",
-                    type: 'success',
-                    layout: 'topRight',
-                    timeout: 3000,
-                    progressBar: false
-                }).show();
-            <%}%>
+    </nav>
 
-            <%if(flash.error && flash.error.length>0){%>
-                new Noty({
-                    theme: 'sunset',
-                    text: "<%=flash.error%>",
-                    type: 'error',
-                    layout: 'topRight',
-                    timeout: 3000,
-                    progressBar: false
-                }).show();
-            <%}%>
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        <%-script%>
-    </body>
+  </div>
+  <!-- Page wrapper end -->
+
+  <script>
+    <%if(flash.success && flash.success.length>0){%>
+        new Noty({
+            theme: 'sunset',
+            text: "<%=flash.success%>",
+            type: 'success',
+            layout: 'topRight',
+            timeout: 3000,
+            progressBar: false
+        }).show();
+    <%}%>
+
+    <%if(flash.error && flash.error.length>0){%>
+        new Noty({
+            theme: 'sunset',
+            text: "<%=flash.error%>",
+            type: 'error',
+            layout: 'topRight',
+            timeout: 3000,
+            progressBar: false
+        }).show();
+    <%}%>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<%-script%>
+
+  <!-- Halfmoon JS -->
+  <script src="path/to/halfmoon.js"></script>
+<script type="text/javascript">
+  // Dark mode toggle demo
+  function toggleDemo() {
+    halfmoon.toggleDarkMode();
+  }
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+</body>
 </html>

@@ -3,15 +3,15 @@ const Post = require('../models/post');
 const fs = require("fs");
 const path = require('path');
 
-// module.exports.signUp = function(req, res){
-//     if(req.isAuthenticated()){
-//         return res.redirect('back');
-//     }
+module.exports.signUp = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('back');
+    }
 
-//     return res.render('sign-up', {
-//         title: 'Social Nodes | Sign Up'
-//     });
-// }
+    return res.render('sign-up', {
+        title: 'Social Nodes | Sign Up'
+    });
+}
 
 // module.exports.signIn = function(req, res){
 //     if(req.isAuthenticated()){
@@ -37,7 +37,9 @@ module.exports.create = function(req, res){
             return res.redirect('back');
         }
 
-        return res.redirect('/user/sign-in');
+        req.flash('success', 'Signed Up! Please log in using your details')
+
+        return res.redirect('/');
     });
 }
 

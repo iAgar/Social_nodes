@@ -76,8 +76,8 @@ class ChatEngine{
 
             console.log(newMessage);
 
-            $('#chat-messages-list').append(newMessage);
             $('#chat-messages-list').append(gap);
+            $('#chat-messages-list').append(newMessage);
         })
     }
 }

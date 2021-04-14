@@ -1,15 +1,17 @@
-<div id="chat" style="position: relative;">
-    <ul id="chat-messages-list">
-        <li class="other-message">
-            <span id="recieved-messages"></span>
-        </li>
-        <br>
-        <br>
-        <li class="self-message">
-            <span id="sent-messages"></span>
-        </li>
-    </ul>
-    <form style="position: absolute; bottom: -200px;">
+<div id="chat">
+    <div>
+        <ul id="chat-messages-list" style="list-style: none;">
+            <li class="other-message" style="right: 0px;">
+                <div id="recieved-messages"></div>
+            </li>
+            <br>
+            <br>
+            <li class="self-message" style="left: 0px;">
+                <div id="sent-messages"></div>
+            </li>
+        </ul>
+    </div>
+    <form style="position: absolute; bottom: 20%;">
         <input type="text" id="chat-message-input" placeholder="Type Message...">
         <button type="submit" id="send-message">Send</button>
     </form>

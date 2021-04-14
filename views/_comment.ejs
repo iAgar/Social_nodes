@@ -18,13 +18,13 @@
 </div> -->
     
 
-<img src="<%=comment.user.avatar%>" width="20">
-<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
 <%=comment.content%>
 <%if((post.user._id == locals.user.id) || (comment.user._id == locals.user.id)){%>
     <a href="/comment/delete/<%=comment._id%>">X</a>
 <%}%>
 <br>
+<img src="<%=comment.user.avatar%>" width="20">
+<a href="/user/profile/<%=comment.user._id%>"><%=comment.user.name%></a>
 <form method="POST" action="/like/toggle/?id=<%=comment._id%>&type=Comment">
     <button type="submit"><%=comment.likes.length%> Likes</button>
 </form>
