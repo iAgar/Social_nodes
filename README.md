@@ -5,11 +5,13 @@ gulp(for minifying asset files).
 
 # Features
 
-Sign In Page
-![Sign In Page](https://user-images.githubusercontent.com/70597343/114662262-009c0b80-9d16-11eb-91c2-34355b2b7e1d.PNG)
 Home Page
-![Home Page](https://user-images.githubusercontent.com/70597343/114662264-0134a200-9d16-11eb-9f28-38a75b451ed1.PNG)
+![Sign In Page](https://user-images.githubusercontent.com/70597343/114662262-009c0b80-9d16-11eb-91c2-34355b2b7e1d.PNG)
+
 Profile Page
+![Home Page](https://user-images.githubusercontent.com/70597343/114662264-0134a200-9d16-11eb-9f28-38a75b451ed1.PNG)
+
+Sign In Page
 ![Profile Page](https://user-images.githubusercontent.com/70597343/114662270-0396fc00-9d16-11eb-953a-85c6762168d7.PNG)
 
 
