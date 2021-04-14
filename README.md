@@ -4,6 +4,9 @@ A social media website based on MVC style built using MongoDB, Express.js and No
 gulp(for minifying asset files). 
 
 # Features
+![Sign In Page](https://user-images.githubusercontent.com/70597343/114662262-009c0b80-9d16-11eb-91c2-34355b2b7e1d.PNG)
+![Home Page](https://user-images.githubusercontent.com/70597343/114662264-0134a200-9d16-11eb-9f28-38a75b451ed1.PNG)
+![Profile Page](https://user-images.githubusercontent.com/70597343/114662270-0396fc00-9d16-11eb-953a-85c6762168d7.PNG)
 
 
 
