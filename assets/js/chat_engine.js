@@ -45,7 +45,9 @@ class ChatEngine{
                     userEmail: self.userEmail,
                     chatroom: 'Social-Nodes'
                 })
+                
             }
+
         });
 
         self.socket.on('recieve_message', function(data){
@@ -68,9 +70,9 @@ class ChatEngine{
                 'html': data.message
             }));
 
-            newMessage.append('<sub>', {
+            newMessage.append($('<sub>', {
                  'html': data.userEmail
-            });
+            }));
 
             newMessage.addClass(messageType);
 

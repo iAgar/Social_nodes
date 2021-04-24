@@ -1,16 +1,20 @@
 
 
-<div class="sidebar">
-    <img src="<%=profile_user.avatar%>" alt="Avatar" width="100">
+<div class="sidebar" style="padding: 2%;">
+    <img src="<%=profile_user.avatar%>" alt="Avatar" width="100" class="rounded-circle">
 <h4>Name: <%=profile_user.name%></h4>
 <%if(locals.user.id == profile_user.id){%>
 <form action="/user/update/<%=user.id%>" enctype="multipart/form-data" method="POST">
     <h4>Update Info</h4>
+    <label>Your Email</label><br>
     <input name="email" type="email" placeholder="Your email" value="<%=user.email%>" required><br><br>
+    <label>Your Name</label><br>
     <input name="name" type="text" placeholder="Your name" value="<%=user.name%>" required><br><br>
+    <label>Your Profile Pic</label><br>
     <input name="avatar" type="file" placeholder="Your profile picture"><br><br>
     <button type="submit">Update</button>
 </form>
+<br><br>
 <%}%>
     <ul style="list-style: none;">
       <li>
