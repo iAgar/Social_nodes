@@ -8,6 +8,9 @@
     "start": "node ./index.js",
     "prod_start": "SET NODE_ENV=production"
   },
+  "engines":{
+    "node": "12.19.0"
+  },
   "author": "Ishaan Agarwal",
   "license": "ISC",
   "dependencies": {
