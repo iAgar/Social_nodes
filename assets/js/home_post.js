@@ -70,7 +70,7 @@
             <p>Comments: </p>
             <li style="list-style: none;">
                 <form action="/comment/create" id="comment-create-form" method="POST">
-                    <input type="text" id="content" name="content" placeholder="Add Comment..." required>
+                    <input type="text" id="content" name="content" placeholder="Add Comment..." required style="width: 80%;">
                     <input type="hidden" name="post" value="${data.post._id}">
                     <button type="submit">Add Comment</button>
                 </form>

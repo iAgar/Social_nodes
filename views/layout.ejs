@@ -43,12 +43,16 @@
 
     <!-- Navbar start -->
     <nav class="navbar">
+      <div class="navbar-content">
+        <button class="btn btn-small" type="button" onclick="halfmoon.toggleSidebar();">
+            <i class="fa fa-bars"></i>
+        </button>
+    </div> 
       <%if(locals.user){%>
         <h3><a href="/">Social Nodes</a></h3>
       <%}else{%>
         <h3>Social Nodes</h3>
-      <%}%>
-      
+      <%}%>     
     </nav>
 
     <%-body%>

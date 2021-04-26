@@ -14,13 +14,13 @@
           </li>
           <li style="list-style: none;">
             <form method="POST" action="/like/toggle/?id=<%=post._id%>&type=Post">
-                <button type="submit"><%=post.likes.length%> Likes</button>
+                <button type="submit"><%=post.likes.length%> <i class="far fa-heart mr-5"></i></button>
             </form>
           </li>
             <p>Comments: </p>
             <li style="list-style: none;">
                 <form action="/comment/create" id="comment-create-form" method="POST">
-                    <input type="text" id="content" name="content" placeholder="Add Comment..." required>
+                    <input type="text" id="content" name="content" placeholder="Add Comment..." required style="width: 80%;">
                     <input type="hidden" name="post" value="<%=post._id%>">
                     <button type="submit">Add Comment</button>
                 </form>
